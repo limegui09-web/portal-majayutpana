@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#7771ad">
+<meta name="description" content="Portal institucional de la Institución Educativa Indígena N.º 4, Sede Majayutpana.">
+<title>I.E. Indígena N.º 4 · Sede Majayutpana</title>
+<style>
+:root{
+  --forest:#7771ad;--forest2:#8d86c5;--sand:#f5f2ff;--cream:#ffffff;
+  --gold:#f0e600;--coral:#a29bd0;--ink:#302c4a;--muted:#6d6883;
+  --line:#e7e3f4;--white:#fff;--shadow:0 18px 50px rgba(92,83,145,.14);
+  --radius:22px;--max:1160px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+button,a{ -webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+.container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+.topline{background:var(--forest);color:#e9f1e9;font-size:.82rem}
+.topline .container{display:flex;justify-content:space-between;gap:12px;padding:9px 0;flex-wrap:wrap}
+.topline strong{color:var(--gold);font-weight:700}
+header{position:sticky;top:0;z-index:20;background:rgba(255,253,248,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(230,225,213,.85)}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brandmark{width:54px;height:54px;display:grid;place-items:center;border-radius:50%;background:#fff;color:var(--forest);font-weight:900;flex-shrink:0;overflow:hidden;border:1px solid var(--line)}
+.brandmark img{width:100%;height:100%;object-fit:contain}
+.brandname{font-size:.92rem;line-height:1.2;font-weight:800;max-width:260px}
+.brandname small{display:block;font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:.03em;margin-top:4px}
+.navlinks{display:flex;align-items:center;gap:22px;font-size:.9rem;font-weight:650}
+.navlinks a{color:#425650;transition:color .2s}
+.navlinks a:hover{color:var(--coral)}
+.nav-cta,.btn{border:0;border-radius:999px;padding:12px 18px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .2s,background .2s}
+.nav-cta,.btn-primary{background:var(--forest);color:white}
+.nav-cta:hover,.btn:hover{transform:translateY(-2px)}
+.menu-toggle{display:none;border:1px solid var(--line);background:white;border-radius:12px;padding:10px 12px;color:var(--forest)}
+.hero{position:relative;overflow:hidden;background:var(--forest);color:white;padding:82px 0 74px}
+.hero:before{content:"";position:absolute;inset:0;opacity:.17;background-image:linear-gradient(135deg,transparent 46%,#f0e600 47%,#f0e600 49%,transparent 50%),linear-gradient(45deg,transparent 46%,#a29bd0 47%,#a29bd0 49%,transparent 50%);background-size:46px 46px;mask-image:linear-gradient(90deg,black,transparent 85%)}
+.hero:after{content:"";position:absolute;width:430px;height:430px;border:1px solid rgba(231,183,91,.4);border-radius:50%;right:-130px;top:-180px;box-shadow:0 0 0 35px rgba(231,183,91,.04),0 0 0 75px rgba(231,183,91,.04)}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--gold);font-weight:800;letter-spacing:.13em;text-transform:uppercase;font-size:.76rem}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(231,183,91,.15)}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(2.5rem,5.6vw,4.8rem);line-height:1.02;letter-spacing:-.055em;margin:18px 0 22px;max-width:740px}
+h1 em{font-style:normal;color:var(--gold)}
+.hero-copy{font-size:1.08rem;color:#d5e2dc;max-width:590px;margin-bottom:28px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:var(--forest)}
+.btn-ghost{background:transparent;color:white;border:1px solid rgba(255,255,255,.35)}
+.hero-note{display:flex;gap:10px;align-items:center;margin-top:28px;color:#c0d2ca;font-size:.86rem}
+.hero-art{min-height:370px;position:relative;display:grid;place-items:center}.crest-float{position:absolute;z-index:3;top:0;left:0;width:126px;height:126px;background:white;border-radius:50%;padding:5px;box-shadow:var(--shadow);border:3px solid var(--gold);overflow:hidden}.crest-float img{width:100%;height:100%;object-fit:contain}
+.art-card{position:relative;width:min(100%,400px);aspect-ratio:4/4.2;border-radius:34px;background:linear-gradient(150deg,#f3dca7,#e5b65a 54%,#d8795d);overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.22);transform:rotate(2deg)}
+.art-card:before{content:"";position:absolute;inset:16px;border:1px solid rgba(18,59,54,.3);border-radius:25px}
+.art-sun{position:absolute;top:50px;right:53px;width:92px;height:92px;border-radius:50%;background:#fff1c8;box-shadow:0 0 0 14px rgba(255,241,200,.2)}
+.mountain{position:absolute;bottom:0;width:0;height:0;border-left:220px solid transparent;border-right:220px solid transparent;border-bottom:220px solid #2b6b5b;left:-25px}
+.mountain.two{border-left-width:180px;border-right-width:180px;border-bottom:155px solid #164b43;left:115px}
+.art-ground{position:absolute;bottom:-45px;left:-20px;width:480px;height:125px;border-radius:50%;background:#7771ad}
+.art-label{position:absolute;left:34px;top:38px;color:var(--forest);font-weight:900;font-size:.76rem;letter-spacing:.15em;text-transform:uppercase}
+.art-caption{position:absolute;bottom:32px;left:32px;right:32px;color:white;font-size:1.8rem;line-height:1.05;font-weight:850;letter-spacing:-.04em}
+.floating-tag{position:absolute;right:-5px;bottom:35px;background:var(--cream);color:var(--forest);padding:15px 18px;border-radius:16px;box-shadow:var(--shadow);font-weight:800;font-size:.9rem}
+.floating-tag span{display:block;font-size:.74rem;font-weight:600;color:var(--muted)}
+.stats{background:var(--sand);border-bottom:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);padding:22px 0;gap:20px}
+.stat{display:flex;align-items:center;gap:13px;padding:4px 18px;border-right:1px solid #ded9f0}
+.stat:last-child{border:0}
+.stat-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:#fbfaff;color:var(--forest);font-size:1.2rem}
+.stat b{display:block;font-size:.95rem}
+.stat small{display:block;color:var(--muted);font-size:.8rem}
+section{padding:82px 0}
+.section-head{max-width:720px;margin-bottom:34px}
+.kicker{color:#7771ad;text-transform:uppercase;font-weight:850;font-size:.75rem;letter-spacing:.14em}
+h2{font-size:clamp(2rem,4vw,3.15rem);line-height:1.08;letter-spacing:-.045em;color:var(--forest);margin:10px 0 14px}
+.section-head p{color:var(--muted);font-size:1.02rem;max-width:660px}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:55px;align-items:center}
+.about-visual{background:var(--sand);padding:26px;border-radius:var(--radius);min-height:330px;position:relative;overflow:hidden}
+.pattern{height:100%;min-height:280px;border-radius:16px;background:repeating-linear-gradient(135deg,transparent 0 17px,rgba(18,59,54,.12) 17px 20px,transparent 20px 38px),repeating-linear-gradient(45deg,transparent 0 17px,rgba(223,121,93,.28) 17px 20px,transparent 20px 38px);display:grid;place-items:center}
+.pattern-center{background:var(--forest);color:var(--gold);width:150px;height:150px;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:2.2rem;box-shadow:0 12px 30px rgba(18,59,54,.18)}
+.pattern-center small{display:block;color:white;font-size:.7rem;letter-spacing:.12em}
+.about-copy p{color:var(--muted)}
+.pill-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+.pill{padding:8px 12px;background:#f0edfb;border-radius:999px;color:var(--forest);font-size:.8rem;font-weight:750}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature-card{padding:25px;border:1px solid var(--line);border-radius:var(--radius);background:white;transition:transform .2s,box-shadow .2s;min-height:230px}
+.feature-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.card-icon{width:48px;height:48px;border-radius:15px;background:#f6f2ff;display:grid;place-items:center;font-size:1.35rem;margin-bottom:20px}
+.feature-card h3{color:var(--forest);font-size:1.18rem;margin-bottom:8px}
+.feature-card p{font-size:.92rem;color:var(--muted);margin-bottom:18px}
+.text-link{font-size:.88rem;font-weight:800;color:#7771ad}
+.section-tint{background:#faf9ff}
+.news-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.news-feature{border-radius:var(--radius);background:var(--forest);color:white;padding:30px;min-height:270px;position:relative;overflow:hidden}
+.news-feature:after{content:"✳";position:absolute;right:20px;bottom:-70px;font-size:15rem;line-height:1;color:rgba(231,183,91,.14)}
+.news-feature>*{position:relative;z-index:1}
+.news-feature .kicker{color:var(--gold)}
+.news-feature h3{font-size:1.8rem;max-width:480px;line-height:1.12;margin:15px 0}
+.news-feature p{color:#d4e1db;max-width:450px}
+.news-list{display:grid;gap:12px}
+.news-item{padding:20px;background:white;border:1px solid var(--line);border-radius:17px}
+.news-item small{color:#7771ad;font-weight:800;text-transform:uppercase;letter-spacing:.07em;font-size:.7rem}
+.news-item h3{font-size:1rem;color:var(--forest);margin:6px 0}
+.news-item p{font-size:.85rem;color:var(--muted);margin:0}
+.ai-section{background:var(--forest);color:white;position:relative;overflow:hidden}
+.ai-section h2{color:white}
+.ai-section .section-head p{color:#c9d9d2}
+.ai-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:45px;align-items:center}
+.ai-points{display:grid;gap:13px;margin-top:25px}
+.ai-point{display:flex;gap:12px;color:#e0ebe5;font-size:.93rem}
+.check{color:var(--gold);font-weight:900}
+.chat{background:var(--cream);color:var(--ink);border-radius:24px;overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.2)}
+.chat-head{background:#f0edfb;padding:17px 20px;display:flex;align-items:center;gap:12px}
+.bot-avatar{width:38px;height:38px;border-radius:13px;background:var(--forest);color:var(--gold);display:grid;place-items:center;font-weight:900}
+.chat-head b{display:block;color:var(--forest)}
+.chat-head small{color:var(--muted)}
+.chat-messages{padding:20px;min-height:215px;max-height:300px;overflow:auto;display:flex;flex-direction:column;gap:12px}
+.message{max-width:88%;padding:12px 14px;border-radius:15px;font-size:.9rem;white-space:pre-wrap}
+.message.bot{background:#f1eff8;align-self:flex-start;border-bottom-left-radius:4px}
+.message.user{background:var(--forest);color:white;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-suggestions{padding:0 20px 14px;display:flex;gap:8px;flex-wrap:wrap}
+.suggestion{border:1px solid var(--line);background:white;border-radius:999px;padding:7px 10px;font-size:.76rem;color:var(--forest)}
+.chat-form{padding:15px 18px;border-top:1px solid var(--line);display:flex;gap:9px}
+.chat-form input{min-width:0;flex:1;border:1px solid var(--line);border-radius:999px;padding:12px 14px;background:white;outline-color:var(--gold)}
+.chat-form button{border:0;border-radius:50%;width:44px;height:44px;background:var(--forest);color:white;font-size:1.15rem}
+.disclaimer{padding:0 20px 15px;font-size:.72rem;color:var(--muted)}
+.resources{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.resource{border:1px solid var(--line);border-radius:18px;padding:22px;background:white}
+.resource .card-icon{margin-bottom:15px}
+.resource h3{font-size:1rem;color:var(--forest);margin-bottom:7px}
+.resource p{font-size:.84rem;color:var(--muted);margin-bottom:14px}
+.resource button{border:0;background:none;padding:0;color:#7771ad;font-weight:800;font-size:.84rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px}
+.contact-panel{background:var(--sand);border-radius:var(--radius);padding:28px}
+.contact-panel h3{color:var(--forest)}
+.contact-line{display:flex;gap:12px;margin:18px 0;color:var(--muted);font-size:.94rem}
+.contact-line b{color:var(--forest);display:block}
+.contact-form{display:grid;gap:13px}
+.contact-form label{font-size:.82rem;font-weight:750;color:var(--forest)}
+.contact-form input,.contact-form textarea{width:100%;margin-top:5px;border:1px solid var(--line);border-radius:12px;padding:12px;background:white;outline-color:var(--gold)}
+.contact-form textarea{min-height:105px;resize:vertical}
+footer{background:#514b7f;color:#d4e1db;padding:35px 0}
+.footer-row{display:flex;justify-content:space-between;gap:25px;align-items:center;flex-wrap:wrap}
+.footer-brand{font-weight:850;color:white}
+footer p{font-size:.82rem;margin:5px 0 0;color:#a9c0b6}
+.footer-links{display:flex;gap:17px;flex-wrap:wrap;font-size:.83rem}
+.notice{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:var(--forest);color:white;padding:13px 18px;border-radius:12px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:calc(100% - 30px);font-size:.9rem}
+.notice.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){
+ .navlinks{gap:12px;font-size:.82rem}.nav-cta{padding:10px 13px}
+ .hero-grid{gap:25px}.hero-art{min-height:320px}.cards{grid-template-columns:repeat(2,1fr)}
+ .resources{grid-template-columns:repeat(2,1fr)}.about-grid,.ai-grid{gap:30px}
+}
+@media(max-width:720px){
+ .container{width:min(var(--max),calc(100% - 30px))}
+ .topline .container{font-size:.74rem}
+ .nav{height:68px}.brandname{font-size:.8rem;max-width:230px}.brandname small{font-size:.66rem}
+ .menu-toggle{display:block}.navlinks{display:none;position:absolute;top:68px;left:0;right:0;background:var(--cream);padding:18px 22px 22px;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}
+ .navlinks.open{display:flex}.navlinks a{padding:12px 0;border-bottom:1px solid var(--line);font-size:.95rem}.navlinks .nav-cta{margin-top:13px}
+ .hero{padding:55px 0 52px}.hero-grid{grid-template-columns:1fr;gap:25px}.hero-art{min-height:310px}.art-card{width:260px}.crest-float{width:90px;height:90px;left:0;top:-8px}.floating-tag{right:calc(50% - 170px);bottom:15px}
+ h1{font-size:clamp(2.6rem,12vw,4rem)}.hero-copy{font-size:1rem}
+ .stats-grid{grid-template-columns:1fr;gap:0;padding:8px 0}.stat{border-right:0;border-bottom:1px solid #ded9f0;padding:12px 4px}.stat:last-child{border:0}
+ section{padding:60px 0}.about-grid,.ai-grid,.news-grid,.contact-grid{grid-template-columns:1fr}
+ .about-visual{min-height:280px}.pattern{min-height:230px}
+ .cards{grid-template-columns:1fr}.feature-card{min-height:0}.resources{grid-template-columns:1fr 1fr}
+ .news-feature{min-height:240px}.chat-messages{min-height:190px}
+}
+@media(max-width:420px){.resources{grid-template-columns:1fr}.hero-actions .btn{width:100%}.brandmark{width:43px;height:43px;border-radius:50%}}
+
+/* Visibilidad prioritaria del escudo institucional */
+.brandmark{width:62px!important;height:62px!important;min-width:62px!important;min-height:62px!important;background:#fff!important;border:2px solid #7771ad!important;border-radius:50%!important;overflow:hidden!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:2px!important}
+.brandmark img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;opacity:1!important;visibility:visible!important}
+.crest-float{position:absolute!important;z-index:5!important;top:8px!important;left:5px!important;width:145px!important;height:145px!important;background:#fff!important;border:4px solid #f0e600!important;border-radius:50%!important;padding:4px!important;overflow:hidden!important;display:block!important;box-shadow:0 18px 42px rgba(50,44,74,.2)!important}
+.crest-float img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;opacity:1!important;visibility:visible!important}
+@media(max-width:720px){.brandmark{width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important}.crest-float{width:100px!important;height:100px!important;top:0!important;left:0!important}}
+
+</style>
+</head>
+<body>
+<div class="topline"><div class="container"><span><strong>EDUCACIÓN · CULTURA · COMUNIDAD</strong></span><span>Portal institucional · Sede Majayutpana</span></div></div>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#inicio" aria-label="Inicio">
+      <span class="brandmark"><img src="./assets/escudo.jpeg" alt="Escudo oficial de la institución"></span>
+      <span class="brandname">INSTITUCIÓN EDUCATIVA INDÍGENA N.º 4<small>SEDE MAJAYUTPANA</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="navlinks" id="navLinks" aria-label="Navegación principal">
+      <a href="#institucion">Institución</a><a href="#academico">Académico</a><a href="#novedades">Novedades</a><a href="#recursos">Recursos</a>
+      <a class="nav-cta" href="#asistente">✦ Asistente IA</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Aprender · Compartir · Crecer</div>
+      <h1>Una educación con raíces y <em>futuro.</em></h1>
+      <p class="hero-copy">Bienvenidos al espacio digital de la Institución Educativa Indígena N.º 4, Sede Majayutpana. Un lugar para aprender, fortalecer nuestra identidad y construir oportunidades en comunidad.</p>
+      <div class="hero-actions"><a class="btn btn-gold" href="#institucion">Conoce la institución <span>↗</span></a><a class="btn btn-ghost" href="#academico">Explorar el portal ↓</a></div>
+      <div class="hero-note"><span>✳</span> Saberes propios, conocimiento y nuevas posibilidades.</div>
+    </div>
+    <div class="hero-art" aria-label="Escudo y elementos visuales de la institución"><div class="crest-float"><img src="./assets/escudo.jpeg" alt="Escudo de la Institución Educativa Indígena N.º 4"></div>
+      <div class="art-card"><div class="art-sun"></div><div class="art-label">Nuestra comunidad</div><div class="mountain"></div><div class="mountain two"></div><div class="art-ground"></div><div class="art-caption">El conocimiento<br>nos conecta.</div></div>
+      <div class="floating-tag">Sede Majayutpana<span>Un espacio para crecer juntos</span></div>
+    </div>
+  </div>
+</section>
+<div class="stats"><div class="container stats-grid">
+  <div class="stat"><div class="stat-icon">⌂</div><div><b>Identidad y territorio</b><small>Aprendizaje conectado con la comunidad</small></div></div>
+  <div class="stat"><div class="stat-icon">✦</div><div><b>Innovación educativa</b><small>Nuevas herramientas para aprender</small></div></div>
+  <div class="stat"><div class="stat-icon">◎</div><div><b>Comunidad educativa</b><small>Familias, estudiantes y docentes</small></div></div>
+</div></div>
+<section id="institucion">
+  <div class="container about-grid">
+    <div class="about-visual"><div class="pattern"><div class="pattern-center">✳<small>MAJAYUTPANA</small></div></div></div>
+    <div class="about-copy"><div class="kicker">Nuestra institución</div><h2>Educación que reconoce quiénes somos.</h2>
+      <p>Este portal está pensado para compartir la vida institucional, apoyar los procesos pedagógicos y dar visibilidad a las iniciativas de la sede. La historia, misión, visión y los contenidos culturales se incorporarán con la participación y validación de la comunidad educativa.</p>
+      <p>Queremos que estudiantes, familias y docentes encuentren aquí información clara, recursos útiles y nuevas formas de colaborar.</p>
+      <div class="pill-row"><span class="pill">Identidad cultural</span><span class="pill">Aprendizaje colaborativo</span><span class="pill">Tecnología con propósito</span></div>
+    </div>
+  </div>
+</section>
+<section class="section-tint" id="academico">
+  <div class="container">
+    <div class="section-head"><div class="kicker">Explora el portal</div><h2>Un espacio para cada necesidad.</h2><p>La estructura puede crecer con la institución. Estos accesos son el punto de partida para organizar la información académica y comunitaria.</p></div>
+    <div class="cards">
+      <article class="feature-card"><div class="card-icon">📚</div><h3>Área académica</h3><p>Guías, actividades, proyectos de aula y materiales de apoyo para acompañar el aprendizaje.</p><a class="text-link" href="#recursos">Ver recursos ↗</a></article>
+      <article class="feature-card"><div class="card-icon">🌱</div><h3>Identidad y cultura</h3><p>Un espacio para compartir saberes, memoria, prácticas culturales y experiencias comunitarias, con autorización.</p><a class="text-link" href="#contacto">Proponer contenido ↗</a></article>
+      <article class="feature-card"><div class="card-icon">🗓️</div><h3>Calendario escolar</h3><p>Fechas importantes, reuniones, jornadas pedagógicas y actividades institucionales.</p><a class="text-link" href="#novedades">Consultar novedades ↗</a></article>
+      <article class="feature-card"><div class="card-icon">🧑‍🏫</div><h3>Espacio docente</h3><p>Ideas didácticas, recursos compartidos y herramientas para fortalecer las prácticas de enseñanza.</p><a class="text-link" href="#recursos">Explorar materiales ↗</a></article>
+      <article class="feature-card"><div class="card-icon">🤝</div><h3>Familias y comunidad</h3><p>Información útil para acompañar a los estudiantes y participar en la vida escolar.</p><a class="text-link" href="#contacto">Canales de contacto ↗</a></article>
+      <article class="feature-card"><div class="card-icon">✨</div><h3>Innovación e IA</h3><p>Descubre cómo utilizar herramientas digitales de forma responsable, creativa y educativa.</p><a class="text-link" href="#asistente">Probar asistente ↗</a></article>
+    </div>
+  </div>
+</section>
+<section id="novedades">
+  <div class="container">
+    <div class="section-head"><div class="kicker">Actualidad institucional</div><h2>Lo que sucede en nuestra comunidad.</h2><p>Este espacio está preparado para publicar noticias, convocatorias y anuncios verificados por la institución.</p></div>
+    <div class="news-grid">
+      <article class="news-feature"><div class="kicker">Espacio destacado</div><h3>Las historias de nuestra escuela merecen ser compartidas.</h3><p>Publica aquí proyectos de aula, celebraciones, iniciativas ambientales, encuentros culturales y logros de la comunidad educativa.</p><a class="btn btn-gold" href="#contacto">Compartir una noticia ↗</a></article>
+      <div class="news-list">
+        <article class="news-item"><small>Comunicados</small><h3>Información oficial para las familias</h3><p>Agrega aquí comunicados y avisos importantes, con fecha de publicación.</p></article>
+        <article class="news-item"><small>Vida escolar</small><h3>Actividades y proyectos pedagógicos</h3><p>Comparte experiencias de aprendizaje con textos e imágenes autorizadas.</p></article>
+        <article class="news-item"><small>Agenda</small><h3>Próximas fechas institucionales</h3><p>Actualiza este apartado con fechas confirmadas por coordinación.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="ai-section" id="asistente">
+  <div class="container ai-grid">
+    <div><div class="kicker">Tecnología con propósito</div><h2>Conoce nuestro asistente educativo.</h2><p style="color:#c9d9d2">Una demostración interactiva para orientar a los visitantes dentro del portal y mostrar cómo podría funcionar un asistente educativo institucional.</p>
+      <div class="ai-points"><div class="ai-point"><span class="check">✓</span><span>Ayuda a encontrar secciones y recursos de la página.</span></div><div class="ai-point"><span class="check">✓</span><span>Responde preguntas frecuentes de forma demostrativa.</span></div><div class="ai-point"><span class="check">✓</span><span>Puede conectarse más adelante a un servicio de IA real con controles de seguridad.</span></div></div>
+    </div>
+    <div class="chat">
+      <div class="chat-head"><div class="bot-avatar">✦</div><div><b>Asistente Majayutpana</b><small>Demostración interactiva · sin conexión a IA externa</small></div></div>
+      <div class="chat-messages" id="chatMessages" aria-live="polite"><div class="message bot">¡Hola! 👋 Soy el asistente de demostración de la sede Majayutpana. Puedo ayudarte a explorar este portal. ¿Qué te gustaría encontrar?</div></div>
+      <div class="chat-suggestions"><button class="suggestion" data-question="¿Dónde encuentro recursos educativos?">Recursos educativos</button><button class="suggestion" data-question="¿Cómo puedo compartir una noticia?">Compartir noticia</button><button class="suggestion" data-question="¿Qué información tiene la página?">Secciones del portal</button></div>
+      <form class="chat-form" id="chatForm"><input id="chatInput" aria-label="Escribe tu pregunta" placeholder="Escribe tu pregunta…" autocomplete="off"><button aria-label="Enviar pregunta" type="submit">➤</button></form>
+      <div class="disclaimer">No introduzcas datos personales, información sensible ni datos de estudiantes.</div>
+    </div>
+  </div>
+</section>
+<section id="recursos">
+  <div class="container">
+    <div class="section-head"><div class="kicker">Biblioteca digital</div><h2>Recursos para seguir aprendiendo.</h2><p>Estos módulos están listos para enlazar documentos, videos y plataformas educativas cuando la institución disponga de los materiales oficiales.</p></div>
+    <div class="resources">
+      <article class="resource"><div class="card-icon">📄</div><h3>Guías y documentos</h3><p>Guías de estudio, orientaciones y materiales descargables.</p><button data-notice="Aquí podrás añadir enlaces a guías y documentos institucionales.">Preparar sección ↗</button></article>
+      <article class="resource"><div class="card-icon">▶️</div><h3>Videos educativos</h3><p>Clases, tutoriales y contenidos audiovisuales.</p><button data-notice="Aquí podrás incorporar videos educativos o enlaces a canales oficiales.">Preparar sección ↗</button></article>
+      <article class="resource"><div class="card-icon">🧩</div><h3>Actividades interactivas</h3><p>Juegos didácticos, ejercicios y experiencias de aprendizaje.</p><button data-notice="Aquí podrás enlazar actividades interactivas adecuadas para cada grado.">Preparar sección ↗</button></article>
+      <article class="resource"><div class="card-icon">🌐</div><h3>Enlaces de interés</h3><p>Plataformas y herramientas recomendadas por los docentes.</p><button data-notice="Aquí podrás agregar enlaces educativos revisados por la institución.">Preparar sección ↗</button></article>
+    </div>
+  </div>
+</section>
+<section class="section-tint" id="contacto">
+  <div class="container contact-grid">
+    <div><div class="kicker">Hablemos</div><h2>Construyamos este espacio entre todos.</h2><p style="color:var(--muted)">Ayúdanos a completar el portal con la información oficial de la sede, sus actividades y los recursos que necesita la comunidad.</p>
+      <div class="contact-panel"><h3>Información institucional</h3><div class="contact-line"><span>📍</span><div><b>Ubicación</b>Majayutpana · Completar con la dirección oficial</div></div><div class="contact-line"><span>✉️</span><div><b>Correo institucional</b>Agregar correo oficial autorizado</div></div><div class="contact-line"><span>☎️</span><div><b>Teléfono</b>Agregar número de contacto institucional</div></div></div>
+    </div>
+    <div class="contact-panel"><h3>Proponer una actualización</h3><p style="font-size:.9rem;color:var(--muted)">Este formulario de muestra no envía datos ni los almacena. Sirve para visualizar el diseño; debe conectarse a un canal institucional para recibir mensajes.</p>
+      <form class="contact-form" id="contactForm"><label>Nombre (opcional)<input name="name" placeholder="Tu nombre"></label><label>Asunto<input name="subject" required placeholder="¿Qué deseas compartir?"></label><label>Mensaje<textarea name="message" required placeholder="Escribe una propuesta general, sin datos sensibles."></textarea></label><button class="btn btn-primary" type="submit">Preparar mensaje ↗</button></form>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="container footer-row"><div><div class="footer-brand">I.E. Indígena N.º 4 · Sede Majayutpana</div><p>Educación, identidad y comunidad.</p></div><div class="footer-links"><a href="#inicio">Inicio ↑</a><a href="#institucion">Institución</a><a href="#recursos">Recursos</a><a href="#contacto">Contacto</a></div><p>Primera versión de demostración · 2026</p></div></footer>
+<div class="notice" id="notice" role="status"></div>
+<script>
+const menuToggle=document.getElementById('menuToggle');
+const navLinks=document.getElementById('navLinks');
+menuToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.textContent=open?'✕':'☰';});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰';}));
+let noticeTimer;
+function showNotice(message){const el=document.getElementById('notice');el.textContent=message;el.classList.add('show');clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>el.classList.remove('show'),3400);}
+document.querySelectorAll('[data-notice]').forEach(b=>b.addEventListener('click',()=>showNotice(b.dataset.notice)));
+const chatMessages=document.getElementById('chatMessages');
+const chatInput=document.getElementById('chatInput');
+function addMessage(text,who){const el=document.createElement('div');el.className='message '+who;el.textContent=text;chatMessages.appendChild(el);chatMessages.scrollTop=chatMessages.scrollHeight;}
+function answerFor(question){
+ const q=question.toLowerCase();
+ if(q.includes('recurso')||q.includes('guía')||q.includes('documento')||q.includes('video'))return 'Puedes explorar la sección “Recursos para seguir aprendiendo”, donde se organizarán guías, videos, actividades y enlaces educativos. Los materiales oficiales se añadirán cuando estén disponibles.';
+ if(q.includes('noticia')||q.includes('compartir')||q.includes('publicar'))return 'Puedes ir a “Novedades” y “Contacto”. En esta versión, el formulario es demostrativo y no envía mensajes; el equipo administrador deberá habilitar un canal institucional para recibir propuestas.';
+ if(q.includes('sección')||q.includes('página')||q.includes('portal')||q.includes('encontrar'))return 'El portal tiene Inicio, Institución, Área académica, Novedades, Asistente IA, Recursos y Contacto. Usa el menú superior o los botones de cada sección para navegar.';
+ if(q.includes('horario')||q.includes('calendario')||q.includes('fecha'))return 'La sección de novedades está preparada para incluir el calendario y las fechas oficiales. Aún no se han cargado fechas: consulta los canales institucionales para confirmar la información.';
+ if(q.includes('historia')||q.includes('misión')||q.includes('visión')||q.includes('cultura'))return 'La sección “Nuestra institución” está preparada para publicar la historia, misión, visión y contenidos culturales que la comunidad educativa valide y autorice.';
+ if(q.includes('hola')||q.includes('buenos'))return '¡Hola! Gracias por visitar el portal de la Sede Majayutpana. Puedo orientarte sobre sus secciones y recursos de demostración.';
+ return 'Gracias por tu pregunta. Soy una demostración local y todavía no estoy conectado a una IA real ni a una base de datos institucional. Prueba preguntando por recursos educativos, novedades, secciones del portal o información institucional.';
+}
+function sendQuestion(question){const q=question.trim();if(!q)return;addMessage(q,'user');chatInput.value='';setTimeout(()=>addMessage(answerFor(q),'bot'),180);}
+document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();sendQuestion(chatInput.value);});
+document.querySelectorAll('[data-question]').forEach(b=>b.addEventListener('click',()=>sendQuestion(b.dataset.question)));
+document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();showNotice('Formulario de demostración: conecta un servicio institucional para enviar mensajes.');});
+</script>
+</body>
+</html>
