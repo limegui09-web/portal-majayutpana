@@ -175,6 +175,28 @@ footer p{font-size:.82rem;margin:5px 0 0;color:#a9c0b6}
 .crest-float img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;opacity:1!important;visibility:visible!important}
 @media(max-width:720px){.brandmark{width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important}.crest-float{width:100px!important;height:100px!important;top:0!important;left:0!important}}
 
+
+/* Noticias y biblioteca digital: primera versión funcional */
+.content-tools{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 24px}
+.content-tools input,.content-tools select{border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);padding:12px 14px;min-height:46px}
+.content-tools input{flex:1;min-width:220px}
+.content-tools select{min-width:190px}
+.news-results,.resource-results{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.content-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;display:flex;flex-direction:column;min-height:100%}
+.content-card-top{background:var(--sand);padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.content-symbol{font-size:1.5rem}
+.content-tag{display:inline-block;background:#f0edfb;color:var(--forest);border-radius:999px;padding:5px 9px;font-size:.7rem;font-weight:800}
+.content-card-body{padding:20px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.content-card-body h3{font-size:1.08rem;color:var(--forest);margin:10px 0 8px}
+.content-card-body p{font-size:.9rem;color:var(--muted);margin-bottom:14px}
+.content-meta{font-size:.75rem;color:var(--muted);font-weight:700}
+.content-card-body .text-link{margin-top:auto;padding-top:6px}
+.empty-state{border:1px dashed #c9c3e5;border-radius:18px;padding:28px;background:#fff;text-align:center;color:var(--muted);grid-column:1/-1}
+.empty-state strong{display:block;color:var(--forest);font-size:1.05rem;margin-bottom:5px}
+.admin-note{background:#fff9cf;border:1px solid #f0e600;border-radius:14px;padding:14px 16px;color:#514b7f;font-size:.85rem;margin-top:22px}
+@media(max-width:900px){.news-results,.resource-results{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.news-results,.resource-results{grid-template-columns:1fr}.content-tools input,.content-tools select{width:100%;min-width:0}}
+
 </style>
 </head>
 <body>
@@ -238,15 +260,15 @@ footer p{font-size:.82rem;margin:5px 0 0;color:#a9c0b6}
 </section>
 <section id="novedades">
   <div class="container">
-    <div class="section-head"><div class="kicker">Actualidad institucional</div><h2>Lo que sucede en nuestra comunidad.</h2><p>Este espacio está preparado para publicar noticias, convocatorias y anuncios verificados por la institución.</p></div>
-    <div class="news-grid">
-      <article class="news-feature"><div class="kicker">Espacio destacado</div><h3>Las historias de nuestra escuela merecen ser compartidas.</h3><p>Publica aquí proyectos de aula, celebraciones, iniciativas ambientales, encuentros culturales y logros de la comunidad educativa.</p><a class="btn btn-gold" href="#contacto">Compartir una noticia ↗</a></article>
-      <div class="news-list">
-        <article class="news-item"><small>Comunicados</small><h3>Información oficial para las familias</h3><p>Agrega aquí comunicados y avisos importantes, con fecha de publicación.</p></article>
-        <article class="news-item"><small>Vida escolar</small><h3>Actividades y proyectos pedagógicos</h3><p>Comparte experiencias de aprendizaje con textos e imágenes autorizadas.</p></article>
-        <article class="news-item"><small>Agenda</small><h3>Próximas fechas institucionales</h3><p>Actualiza este apartado con fechas confirmadas por coordinación.</p></article>
-      </div>
+    <div class="section-head"><div class="kicker">Actualidad institucional</div><h2>Lo que sucede en nuestra comunidad.</h2><p>Noticias y comunicados oficiales de la Sede Majayutpana. Las publicaciones se mostrarán aquí cuando se incorporen al listado del portal.</p></div>
+    <div class="content-tools" role="search" aria-label="Buscar noticias">
+      <input id="newsSearch" type="search" placeholder="Buscar noticias o comunicados…" aria-label="Buscar noticias o comunicados">
+      <select id="newsCategory" aria-label="Filtrar noticias por categoría">
+        <option value="">Todas las categorías</option><option value="Comunicados">Comunicados</option><option value="Vida escolar">Vida escolar</option><option value="Cultura">Cultura</option><option value="Agenda">Agenda</option><option value="Logros">Logros</option>
+      </select>
     </div>
+    <div class="news-results" id="newsResults" aria-live="polite"></div>
+    <div class="admin-note"><strong>Para publicar una noticia:</strong> edita el listado <code>NEWS_ITEMS</code> dentro de <code>index.html</code>, añade título, fecha, categoría, resumen y enlace opcional, y guarda los cambios en GitHub. Publica únicamente información verificada y fotografías autorizadas.</div>
   </div>
 </section>
 <section class="ai-section" id="asistente">
@@ -265,13 +287,18 @@ footer p{font-size:.82rem;margin:5px 0 0;color:#a9c0b6}
 </section>
 <section id="recursos">
   <div class="container">
-    <div class="section-head"><div class="kicker">Biblioteca digital</div><h2>Recursos para seguir aprendiendo.</h2><p>Estos módulos están listos para enlazar documentos, videos y plataformas educativas cuando la institución disponga de los materiales oficiales.</p></div>
-    <div class="resources">
-      <article class="resource"><div class="card-icon">📄</div><h3>Guías y documentos</h3><p>Guías de estudio, orientaciones y materiales descargables.</p><button data-notice="Aquí podrás añadir enlaces a guías y documentos institucionales.">Preparar sección ↗</button></article>
-      <article class="resource"><div class="card-icon">▶️</div><h3>Videos educativos</h3><p>Clases, tutoriales y contenidos audiovisuales.</p><button data-notice="Aquí podrás incorporar videos educativos o enlaces a canales oficiales.">Preparar sección ↗</button></article>
-      <article class="resource"><div class="card-icon">🧩</div><h3>Actividades interactivas</h3><p>Juegos didácticos, ejercicios y experiencias de aprendizaje.</p><button data-notice="Aquí podrás enlazar actividades interactivas adecuadas para cada grado.">Preparar sección ↗</button></article>
-      <article class="resource"><div class="card-icon">🌐</div><h3>Enlaces de interés</h3><p>Plataformas y herramientas recomendadas por los docentes.</p><button data-notice="Aquí podrás agregar enlaces educativos revisados por la institución.">Preparar sección ↗</button></article>
+    <div class="section-head"><div class="kicker">Biblioteca digital</div><h2>Recursos para seguir aprendiendo.</h2><p>Busca materiales por nombre o tipo. Los documentos se añadirán cuando la institución disponga de archivos y enlaces oficiales.</p></div>
+    <div class="content-tools" role="search" aria-label="Buscar recursos educativos">
+      <input id="resourceSearch" type="search" placeholder="Buscar guías, talleres, videos…" aria-label="Buscar recursos educativos">
+      <select id="resourceCategory" aria-label="Filtrar recursos por categoría">
+        <option value="">Todas las categorías</option><option value="Guías y documentos">Guías y documentos</option><option value="Videos educativos">Videos educativos</option><option value="Actividades interactivas">Actividades interactivas</option><option value="Enlaces de interés">Enlaces de interés</option>
+      </select>
+      <select id="resourceAudience" aria-label="Filtrar recursos por público">
+        <option value="">Todos los públicos</option><option value="Estudiantes">Estudiantes</option><option value="Docentes">Docentes</option><option value="Familias">Familias</option>
+      </select>
     </div>
+    <div class="resource-results" id="resourceResults" aria-live="polite"></div>
+    <div class="admin-note"><strong>Para añadir un recurso:</strong> sube el PDF, imagen o material al repositorio (por ejemplo, a una carpeta <code>recursos/</code>) y agrega sus datos al listado <code>RESOURCE_ITEMS</code> dentro de <code>index.html</code>. Comprueba que el archivo no contenga datos personales de estudiantes.</div>
   </div>
 </section>
 <section class="section-tint" id="contacto">
@@ -288,6 +315,73 @@ footer p{font-size:.82rem;margin:5px 0 0;color:#a9c0b6}
 <footer><div class="container footer-row"><div><div class="footer-brand">I.E. Indígena N.º 4 · Sede Majayutpana</div><p>Educación, identidad y comunidad.</p></div><div class="footer-links"><a href="#inicio">Inicio ↑</a><a href="#institucion">Institución</a><a href="#recursos">Recursos</a><a href="#contacto">Contacto</a></div><p>Primera versión de demostración · 2026</p></div></footer>
 <div class="notice" id="notice" role="status"></div>
 <script>
+// CONTENIDO EDITABLE PARA GITHUB PAGES
+// Añade objetos a estos listados para publicar noticias y recursos.
+// No se muestran noticias ni documentos ficticios: los listados comienzan vacíos.
+const NEWS_ITEMS = [
+  // Ejemplo para copiar y completar:
+  // {title:"Título de la noticia", date:"2026-10-10", category:"Vida escolar",
+  //  summary:"Resumen breve y verificado.", url:"#", label:"Leer noticia"}
+];
+const RESOURCE_ITEMS = [
+  // Ejemplo para copiar y completar:
+  // {title:"Guía de ciencias", category:"Guías y documentos", audience:"Estudiantes",
+  //  description:"Guía de trabajo para el grado correspondiente.", url:"./recursos/guia-ciencias.pdf",
+  //  type:"PDF"}
+];
+
+function escapeHTML(value){
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[ch]);
+}
+function renderNews(){
+  const target=document.getElementById("newsResults");
+  if(!target)return;
+  const query=(document.getElementById("newsSearch")?.value||"").trim().toLocaleLowerCase("es");
+  const category=document.getElementById("newsCategory")?.value||"";
+  const items=NEWS_ITEMS.filter(item=>{
+    const text=[item.title,item.summary,item.category,item.date].join(" ").toLocaleLowerCase("es");
+    return text.includes(query)&&(!category||item.category===category);
+  }).sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+  if(!items.length){
+    target.innerHTML='<div class="empty-state"><strong>'+(NEWS_ITEMS.length?'No encontramos resultados':'Próximamente, noticias de nuestra comunidad')+'</strong>'+(NEWS_ITEMS.length?'Prueba con otras palabras o selecciona otra categoría.':'Aquí aparecerán comunicados, actividades y fechas confirmadas por la institución.')+'</div>';
+    return;
+  }
+  target.innerHTML=items.map(item=>`<article class="content-card">
+    <div class="content-card-top"><span class="content-symbol">✦</span><span class="content-tag">${escapeHTML(item.category||"Institucional")}</span></div>
+    <div class="content-card-body"><div class="content-meta">${escapeHTML(item.date||"Fecha por confirmar")}</div>
+    <h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.summary||"Consulta esta publicación institucional.")}</p>
+    ${item.url?`<a class="text-link" href="${escapeHTML(item.url)}">${escapeHTML(item.label||"Leer más")} ↗</a>`:""}</div></article>`).join("");
+}
+function renderResources(){
+  const target=document.getElementById("resourceResults");
+  if(!target)return;
+  const query=(document.getElementById("resourceSearch")?.value||"").trim().toLocaleLowerCase("es");
+  const category=document.getElementById("resourceCategory")?.value||"";
+  const audience=document.getElementById("resourceAudience")?.value||"";
+  const items=RESOURCE_ITEMS.filter(item=>{
+    const text=[item.title,item.description,item.category,item.audience,item.type].join(" ").toLocaleLowerCase("es");
+    return text.includes(query)&&(!category||item.category===category)&&(!audience||item.audience===audience);
+  });
+  if(!items.length){
+    target.innerHTML='<div class="empty-state"><strong>'+(RESOURCE_ITEMS.length?'No encontramos recursos con esos filtros':'La biblioteca digital se está preparando')+'</strong>'+(RESOURCE_ITEMS.length?'Cambia la búsqueda o los filtros para ver otros materiales.':'Pronto podrás consultar aquí guías, talleres, videos y enlaces educativos verificados.')+'</div>';
+    return;
+  }
+  const icons={"Guías y documentos":"📄","Videos educativos":"▶️","Actividades interactivas":"🧩","Enlaces de interés":"🌐"};
+  target.innerHTML=items.map(item=>`<article class="content-card">
+    <div class="content-card-top"><span class="content-symbol">${icons[item.category]||"📚"}</span><span class="content-tag">${escapeHTML(item.category||"Recurso")}</span></div>
+    <div class="content-card-body"><div class="content-meta">${escapeHTML(item.audience||"Comunidad educativa")}${item.type?" · "+escapeHTML(item.type):""}</div>
+    <h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.description||"Material educativo institucional.")}</p>
+    ${item.url?`<a class="text-link" href="${escapeHTML(item.url)}" target="_blank" rel="noopener">Abrir recurso ↗</a>`:"<span class='content-meta'>Enlace pendiente de añadir</span>"}</div></article>`).join("");
+}
+document.getElementById("newsSearch")?.addEventListener("input",renderNews);
+document.getElementById("newsCategory")?.addEventListener("change",renderNews);
+document.getElementById("resourceSearch")?.addEventListener("input",renderResources);
+document.getElementById("resourceCategory")?.addEventListener("change",renderResources);
+document.getElementById("resourceAudience")?.addEventListener("change",renderResources);
+renderNews();renderResources();
+
 const menuToggle=document.getElementById('menuToggle');
 const navLinks=document.getElementById('navLinks');
 menuToggle.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.textContent=open?'✕':'☰';});
@@ -300,7 +394,7 @@ const chatInput=document.getElementById('chatInput');
 function addMessage(text,who){const el=document.createElement('div');el.className='message '+who;el.textContent=text;chatMessages.appendChild(el);chatMessages.scrollTop=chatMessages.scrollHeight;}
 function answerFor(question){
  const q=question.toLowerCase();
- if(q.includes('recurso')||q.includes('guía')||q.includes('documento')||q.includes('video'))return 'Puedes explorar la sección “Recursos para seguir aprendiendo”, donde se organizarán guías, videos, actividades y enlaces educativos. Los materiales oficiales se añadirán cuando estén disponibles.';
+ if(q.includes('recurso')||q.includes('guía')||q.includes('documento')||q.includes('video'))return 'Puedes explorar la sección “Recursos para seguir aprendiendo”, donde se pueden buscar guías, videos, actividades y enlaces educativos. Los materiales oficiales se irán incorporando cuando estén disponibles.';
  if(q.includes('noticia')||q.includes('compartir')||q.includes('publicar'))return 'Puedes ir a “Novedades” y “Contacto”. En esta versión, el formulario es demostrativo y no envía mensajes; el equipo administrador deberá habilitar un canal institucional para recibir propuestas.';
  if(q.includes('sección')||q.includes('página')||q.includes('portal')||q.includes('encontrar'))return 'El portal tiene Inicio, Institución, Área académica, Novedades, Asistente IA, Recursos y Contacto. Usa el menú superior o los botones de cada sección para navegar.';
  if(q.includes('horario')||q.includes('calendario')||q.includes('fecha'))return 'La sección de novedades está preparada para incluir el calendario y las fechas oficiales. Aún no se han cargado fechas: consulta los canales institucionales para confirmar la información.';
